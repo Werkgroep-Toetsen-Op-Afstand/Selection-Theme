@@ -64,8 +64,14 @@
       {{ range .Pages.ByWeight }}
       <div class="block__header block__header--with-image">
         <img src="{{ .Site.BaseURL }}{{ .Params.Icon }}" alt="tips icon" class="block__header-icon">
-        <h2 class="block__title" id="{{ replace (lower .Title) " " "_" }}">{{ .Title }}</h2>
+        <h2 class="block__title" id="{{ replace (lower .Title) " " "_" }}">{{ .Title }} {{ if eq .Title "Online" }}
+afname
+{{ end }}</h2>
       </div>
+      
+              <!-- Add feedback link -->
+        <a class="feedbackBTN" style="border: 1px solid #fedb00; background-color: #fedb00; padding: 4px;" href="https://docs.google.com/forms/d/e/1FAIpQLSeIJp2KUWZrkWc4ynzizsIxewydEeeIXE62wU1K2nbr1Ge_CA/viewform?usp=pp_url&entry.1613502009={{ .Permalink }}" target="_blank">Feedback</a>
+      
       {{ if eq .Params.Expandable true }}
       <div class="card card--collapsible card--bottom-space">
         <div class="card__text card__text--light card--collaps">
@@ -128,9 +134,9 @@
 {{ if isset .Parent.Params "category" }}
 <div class="block block--larger block--white">
   <div class="block__header">
-    <h2 class="block__title">Other teaching methods</h2>
-    <span class="block__subtitle">For {{ .Parent.Params.Category }} ({{ .Parent.Params.Subtitle }}) - </span>
-    <a href="{{ .Site.BaseURL }}" class="block__header--link">change course size</a>
+    <h2 class="block__title">Andere toetsvormen</h2>
+    <span class="block__subtitle">Kies hieronder een andere {{ .Parent.Params.Title }} of </span>
+    <a href="{{ .Site.BaseURL }}" class="block__header--link">verander de cursus omvang.</a>
   </div>
 
   <!-- The cards for different activities. -->
